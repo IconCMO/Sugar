@@ -1,5 +1,5 @@
 /*
- *  Sugar Library vedge
+ *  Sugar Library v1.3.9.1
  *
  *  Freely distributable and licensed under the MIT-style license.
  *  Copyright (c) 2013 Andrew Plummer
@@ -5266,7 +5266,7 @@
       });
       if(!key && paramIsArray) key = obj.length.toString();
       setParamsObject(obj, key, value);
-    } else if(value.match(/^[+-]?\d+(\.\d+)?$/)) {
+    } else if(value.match(/^[+-]?\d+(\.\d+)?$/) && value === parseFloat(value)+"") {
       obj[param] = parseFloat(value);
     } else if(value === 'true') {
       obj[param] = true;
@@ -5599,7 +5599,7 @@
     },
 
     /***
-     * @method Object.toQueryString(<obj>, [namespace] = true)
+     * @method Object.toQueryString(<obj>, [namespace] = null)
      * @returns Object
      * @short Converts the object into a query string.
      * @extra Accepts deep nested objects and arrays. If [namespace] is passed, it will be prefixed to all param names.
